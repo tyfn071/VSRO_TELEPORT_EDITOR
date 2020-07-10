@@ -62,6 +62,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Globals\CTeleportBase.cs" />
+    <Compile Include="Globals\Globals.cs" />
     <Compile Include="Globals\ITeleport.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
