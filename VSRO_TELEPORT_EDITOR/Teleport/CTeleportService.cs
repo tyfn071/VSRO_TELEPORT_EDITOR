@@ -8,7 +8,7 @@ namespace VSRO_TELEPORT_EDITOR
 {
     public class CTeleportService:CTeleportBase
     {
-        public int m_Service { get; set; }
+
         public int m_ID { get; set; }
         public short m_GenRegionID { get; set; }
         public short m_GenPos_X { get; set; }

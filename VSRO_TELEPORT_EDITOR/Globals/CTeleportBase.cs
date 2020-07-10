@@ -17,7 +17,8 @@ namespace VSRO_TELEPORT_EDITOR
         {
             m_Status = status;
         }
-        public EditStatus m_Status;     
+        public EditStatus m_Status;
+        public int m_Service { get; set; }
 
         public virtual void SaveToDatabase()
         {
