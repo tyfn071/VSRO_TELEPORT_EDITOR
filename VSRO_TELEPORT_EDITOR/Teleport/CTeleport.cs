@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VSRO_TELEPORT_EDITOR
 {
-    public sealed class CTeleport:CTeleportBase
+    public sealed class CTeleport:CTeleportService
     {
         public string m_CodeName128 { get; set; }
         public string m_AssocRefObjCodeName { get; set; }
