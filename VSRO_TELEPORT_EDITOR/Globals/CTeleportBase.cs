@@ -20,18 +20,48 @@ namespace VSRO_TELEPORT_EDITOR
         }
         public EditStatus m_Status;
         public int m_Service { get; set; }
-        protected SqlCommand m_SqlObj;
         protected abstract string GetInsertQuery();
         protected abstract string GetUpdateQuery();
         protected abstract string GetRemoveQuery();
-        protected abstract void LoadParameters();
+        protected virtual void LoadParameters(SqlCommand comm)
+        {
+            comm.Parameters.Add("@Service", System.Data.SqlDbType.Int, m_Service);
+        }
 
 
         public virtual void SaveToDatabase()
         {
+            if(m_Status!=EditStatus.Notr)
+            {
+                string sqlQuery = string.Empty;
+
+                switch(m_Status)
+                {
+                    case EditStatus.New:
+                        sqlQuery = GetInsertQuery();
+                        break;
+                    case EditStatus.Edited:
+                        sqlQuery = GetUpdateQuery();
+                        break;
+                    case EditStatus.Removed:
+                        sqlQuery = GetRemoveQuery();
+                        break;
+                }
+
+                using (SqlConnection conn = new SqlConnection(Globals.s_SqlConnectionString))
+                {
+                    conn.Open();
+                    using (SqlCommand comm = new SqlCommand(sqlQuery, conn))
+                    {
+                        LoadParameters(comm);
+                        comm.ExecuteNonQuery();
+                        m_Status = EditStatus.Notr;
+                    }
+                }
+            }
 
         }
-        public virtual void SaveToClient()
+        public static void SaveToClient(string filename)
         {
 
         }
