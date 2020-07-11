@@ -19,9 +19,5 @@ namespace VSRO_TELEPORT_EDITOR
         /// Save changes to database
         /// </summary>
         void SaveToDatabase();
-        /// <summary>
-        /// Save changes to Media.pk2 file
-        /// </summary>
-        void SaveToClient();
     }
 }

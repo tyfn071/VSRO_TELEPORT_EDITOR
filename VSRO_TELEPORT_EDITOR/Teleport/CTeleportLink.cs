@@ -67,13 +67,18 @@ namespace VSRO_TELEPORT_EDITOR
         public STeleportRestrict Restrict4 { get; set; }
         public STeleportRestrict Restrict5 { get; set; }
 
-        public override void SaveToDatabase()
+        protected override string GetInsertQuery()
         {
-
+            throw new NotImplementedException();
         }
-        public override void SaveToClient()
+        protected override string GetRemoveQuery()
         {
-
+            throw new NotImplementedException();
         }
+        protected override string GetUpdateQuery()
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }
