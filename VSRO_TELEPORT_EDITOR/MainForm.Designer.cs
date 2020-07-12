@@ -91,7 +91,7 @@
             // 
             // cAddTeleportButton
             // 
-            this.cAddTeleportButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton1.ImageOptions.SvgImage")));
+            this.cAddTeleportButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("cAddTeleportButton.ImageOptions.SvgImage")));
             this.cAddTeleportButton.Location = new System.Drawing.Point(5, 140);
             this.cAddTeleportButton.Name = "cAddTeleportButton";
             this.cAddTeleportButton.Size = new System.Drawing.Size(168, 48);
@@ -117,6 +117,7 @@
             this.Controls.Add(this.cLogPanel);
             this.Name = "MainForm";
             this.Text = "Vsro Teleport Editor v1.0";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.cLogPanel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cLefPanel)).EndInit();
             this.cLefPanel.ResumeLayout(false);

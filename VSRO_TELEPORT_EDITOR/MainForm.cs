@@ -1,11 +1,5 @@
 ﻿using DevExpress.XtraEditors;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace VSRO_TELEPORT_EDITOR
@@ -32,6 +26,11 @@ namespace VSRO_TELEPORT_EDITOR
         private void cAddTeleportButton_Click(object sender, EventArgs e)
         {
             OpenForm(new TeleportForm());
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            Globals.s_SqlConnectionString= "Data Source=TAYFUNOSMAN; Initial Catalog=SRO_VT_SHARD; User Id=tyfn071; Password=1119007";
         }
     }
 }

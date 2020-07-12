@@ -10,6 +10,45 @@ namespace VSRO_TELEPORT_EDITOR
 {
     public sealed class CTeleport : CTeleportService
     {
+        public CTeleport():base()
+        {
+
+        }
+        public CTeleport(string codeName):base()
+        {
+            using(SqlConnection conn=new SqlConnection(Globals.s_SqlConnectionString))
+            {
+                conn.Open();
+                using(SqlCommand command=new SqlCommand("select * from _RefTeleport where CodeName128=@codename",conn))
+                {
+                    command.Parameters.AddWithValue("@codename", codeName);
+                    using(SqlDataReader reader=command.ExecuteReader())
+                    {
+                        if(reader.HasRows)
+                        {
+                            reader.Read();
+
+                            m_Service = reader.GetInt32(0);
+                            m_ID = reader.GetInt32(1);
+                            m_CodeName128 = reader.GetString(2).Trim();
+                            m_AssocRefObjCodeName = reader.GetString(3);
+                            m_ZoneName128 = reader.GetString(5);
+                            m_GenRegionID = reader.GetInt16(6);
+                            m_GenPos_X = reader.GetInt16(7);
+                            m_GenPos_Y = reader.GetInt16(8);
+                            m_GenPos_Z = reader.GetInt16(9);
+                            m_GenAreaRadius = reader.GetInt16(10);                            
+                            m_CanBeResurrectPos = reader.GetByte(11) == 1;
+                            m_CanBeGotoResurrectPos = reader.GetByte(12) == 1;
+                            m_GenWorldID = reader.GetInt16(13);
+                            m_BindInteractionMask = reader.GetByte(14);
+                            m_FixedService = reader.GetByte(15);
+                        }
+                    }
+                }
+            }
+        }
+
         internal static string s_ClientFileName = "teleportdata.txt";
         public string m_CodeName128 { get; set; }
         public string m_AssocRefObjCodeName { get; set; }
