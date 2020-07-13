@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>teleporteditor.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.BonusSkins.v18.2" />
     <Reference Include="DevExpress.Data.v18.2" />
@@ -73,6 +76,12 @@
     <Compile Include="TeleportForm.Designer.cs">
       <DependentUpon>TeleportForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="TeleportLinkForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TeleportLinkForm.Designer.cs">
+      <DependentUpon>TeleportLinkForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Teleport\CTeleport.cs" />
     <Compile Include="Teleport\CTeleportLink.cs" />
     <Compile Include="Teleport\CTeleportService.cs" />
@@ -92,6 +101,9 @@
     <EmbeddedResource Include="TeleportForm.resx">
       <DependentUpon>TeleportForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="TeleportLinkForm.resx">
+      <DependentUpon>TeleportLinkForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -104,7 +116,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="teleporteditor.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

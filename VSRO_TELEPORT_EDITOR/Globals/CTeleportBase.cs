@@ -25,7 +25,7 @@ namespace VSRO_TELEPORT_EDITOR
         protected abstract string GetRemoveQuery();
         protected virtual void LoadParameters(SqlCommand comm)
         {
-            comm.Parameters.Add("@Service", System.Data.SqlDbType.Int, m_Service);
+            comm.Parameters.AddWithValue("@Service", m_Service);
         }
 
 

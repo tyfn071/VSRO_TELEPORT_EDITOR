@@ -5,12 +5,17 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DevExpress.Data.Async;
 
 namespace VSRO_TELEPORT_EDITOR
 {
     public sealed class CTeleport : CTeleportService
     {
         public CTeleport():base()
+        {
+
+        }
+        public CTeleport(EditStatus status):base(status)
         {
 
         }
@@ -62,14 +67,14 @@ namespace VSRO_TELEPORT_EDITOR
         protected override void LoadParameters(SqlCommand comm)
         {
             base.LoadParameters(comm);
-            comm.Parameters.Add("@CodeName128", SqlDbType.VarChar, 129, m_CodeName128);
-            comm.Parameters.Add("@AssocRefObjCodeName128", SqlDbType.VarChar, 129, m_AssocRefObjCodeName);
-            comm.Parameters.Add("@ZoneName128", SqlDbType.VarChar, 129, m_ZoneName128);
-            comm.Parameters.Add("@GenAreaRadius", SqlDbType.SmallInt, m_GenAreaRadius);
-            comm.Parameters.Add("@CanBeResurrectPos", SqlDbType.TinyInt, m_CanBeResurrectPos ? 1 : 0);
-            comm.Parameters.Add("@CanGotoResurrectPos", SqlDbType.TinyInt, m_CanBeGotoResurrectPos ? 1 : 0);
-            comm.Parameters.Add("@BindInteractionMask", SqlDbType.TinyInt, m_BindInteractionMask);
-            comm.Parameters.Add("@FixedService", SqlDbType.TinyInt, m_FixedService);
+            comm.Parameters.AddWithValue("@CodeName128",  m_CodeName128);
+            comm.Parameters.AddWithValue("@AssocRefObjCodeName128",  m_AssocRefObjCodeName);
+            comm.Parameters.AddWithValue("@ZoneName128", m_ZoneName128);
+            comm.Parameters.AddWithValue("@GenAreaRadius", m_GenAreaRadius);
+            comm.Parameters.AddWithValue("@CanBeResurrectPos",  m_CanBeResurrectPos ? 1 : 0);
+            comm.Parameters.AddWithValue("@CanGotoResurrectPos", m_CanBeGotoResurrectPos ? 1 : 0);
+            comm.Parameters.AddWithValue("@BindInteractionMask",  m_BindInteractionMask);
+            comm.Parameters.AddWithValue("@FixedService",  m_FixedService);
         }
 
         protected override string GetInsertQuery()
@@ -84,5 +89,43 @@ namespace VSRO_TELEPORT_EDITOR
                 ",[CanBeResurrectPos] = @CanBeResurrectPos,[CanGotoResurrectPos] = @CanGotoResurrectPos,[GenWorldID] = @GenWorldID,[BindInteractionMask] =@BindInteractionMask,[FixedService] =@FixedService where ID=@ID";
         protected override string GetRemoveQuery()
         => "delete from _RefTeleport where ID=@ID";
+
+        internal static bool IsExistsTeleport(string codeName)
+        {
+            bool s = false;
+            using(SqlConnection conn=new SqlConnection(Globals.s_SqlConnectionString))
+            {
+                conn.Open();
+                using(SqlCommand command=new SqlCommand("select ID from _RefTeleport where CodeName128=@codename",conn))
+                {
+                    command.Parameters.AddWithValue("@codename", codeName);
+                    using(SqlDataReader reader=command.ExecuteReader())
+                    {
+                        s = reader.HasRows;
+                    }
+                }
+            }
+
+            return s;
+        }
+
+        public override void SaveToDatabase()
+        {
+            if(m_Status==EditStatus.Removed)
+            {
+                using(SqlConnection conn=new SqlConnection(Globals.s_SqlConnectionString))
+                {
+                    conn.Open();
+                    using(SqlCommand command=new SqlCommand("delete from _RefTeleLink where OwnerTeleport=@ID or TargetTeleport=@ID",conn))
+                    {
+                        command.Parameters.AddWithValue("@ID", m_ID);
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            base.SaveToDatabase();
+
+
+        }
     }
 }

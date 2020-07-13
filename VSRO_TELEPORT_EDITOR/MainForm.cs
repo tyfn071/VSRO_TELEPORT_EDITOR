@@ -31,6 +31,7 @@ namespace VSRO_TELEPORT_EDITOR
         private void MainForm_Load(object sender, EventArgs e)
         {
             Globals.s_SqlConnectionString= "Data Source=TAYFUNOSMAN; Initial Catalog=SRO_VT_SHARD; User Id=tyfn071; Password=1119007";
+            Globals.LoadGameWorlds();
         }
     }
 }

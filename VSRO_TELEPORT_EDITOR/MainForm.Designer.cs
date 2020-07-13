@@ -29,26 +29,18 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.cLogPanel = new DevExpress.XtraEditors.PanelControl();
             this.cLefPanel = new DevExpress.XtraEditors.PanelControl();
             this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.cAddTeleportButton = new DevExpress.XtraEditors.SimpleButton();
             this.cMainPanel = new DevExpress.XtraEditors.PanelControl();
-            ((System.ComponentModel.ISupportInitialize)(this.cLogPanel)).BeginInit();
+            this.cLogPanel = new DevExpress.XtraEditors.PanelControl();
             ((System.ComponentModel.ISupportInitialize)(this.cLefPanel)).BeginInit();
             this.cLefPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cMainPanel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cLogPanel)).BeginInit();
             this.SuspendLayout();
-            // 
-            // cLogPanel
-            // 
-            this.cLogPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.cLogPanel.Location = new System.Drawing.Point(0, 509);
-            this.cLogPanel.Name = "cLogPanel";
-            this.cLogPanel.Size = new System.Drawing.Size(1077, 101);
-            this.cLogPanel.TabIndex = 0;
             // 
             // cLefPanel
             // 
@@ -59,7 +51,7 @@
             this.cLefPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.cLefPanel.Location = new System.Drawing.Point(0, 0);
             this.cLefPanel.Name = "cLefPanel";
-            this.cLefPanel.Size = new System.Drawing.Size(179, 509);
+            this.cLefPanel.Size = new System.Drawing.Size(179, 569);
             this.cLefPanel.TabIndex = 1;
             // 
             // simpleButton4
@@ -101,11 +93,20 @@
             // 
             // cMainPanel
             // 
+            this.cMainPanel.ContentImageAlignment = System.Drawing.ContentAlignment.BottomCenter;
             this.cMainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cMainPanel.Location = new System.Drawing.Point(179, 0);
             this.cMainPanel.Name = "cMainPanel";
-            this.cMainPanel.Size = new System.Drawing.Size(898, 509);
+            this.cMainPanel.Size = new System.Drawing.Size(898, 569);
             this.cMainPanel.TabIndex = 2;
+            // 
+            // cLogPanel
+            // 
+            this.cLogPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.cLogPanel.Location = new System.Drawing.Point(0, 569);
+            this.cLogPanel.Name = "cLogPanel";
+            this.cLogPanel.Size = new System.Drawing.Size(1077, 41);
+            this.cLogPanel.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -115,26 +116,26 @@
             this.Controls.Add(this.cMainPanel);
             this.Controls.Add(this.cLefPanel);
             this.Controls.Add(this.cLogPanel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "Vsro Teleport Editor v1.0";
             this.Load += new System.EventHandler(this.MainForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.cLogPanel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cLefPanel)).EndInit();
             this.cLefPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.cMainPanel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cLogPanel)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private DevExpress.XtraEditors.PanelControl cLogPanel;
         private DevExpress.XtraEditors.PanelControl cLefPanel;
         private DevExpress.XtraEditors.PanelControl cMainPanel;
         private DevExpress.XtraEditors.SimpleButton simpleButton4;
         private DevExpress.XtraEditors.SimpleButton simpleButton3;
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
         private DevExpress.XtraEditors.SimpleButton cAddTeleportButton;
+        private DevExpress.XtraEditors.PanelControl cLogPanel;
     }
 }
 

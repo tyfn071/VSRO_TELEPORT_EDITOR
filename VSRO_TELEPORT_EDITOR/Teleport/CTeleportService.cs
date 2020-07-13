@@ -11,6 +11,14 @@ namespace VSRO_TELEPORT_EDITOR
     public class CTeleportService:CTeleportBase
     {
 
+        public CTeleportService():base()
+        {
+
+        }
+        public CTeleportService(EditStatus status):base(status)
+        {
+
+        }
         public int m_ID { get; set; }
         public short m_GenRegionID { get; set; }
         public short m_GenPos_X { get; set; }
@@ -34,12 +42,12 @@ namespace VSRO_TELEPORT_EDITOR
         protected override void LoadParameters(SqlCommand comm)
         {
             base.LoadParameters(comm);
-            comm.Parameters.Add("@ID", SqlDbType.Int, m_ID);
-            comm.Parameters.Add("@GenRegionID", SqlDbType.SmallInt, m_GenRegionID);
-            comm.Parameters.Add("@GenPos_X", SqlDbType.SmallInt, m_GenPos_X);
-            comm.Parameters.Add("@GenPos_Y", SqlDbType.SmallInt, m_GenPos_Y);
-            comm.Parameters.Add("@GenPos_Z", SqlDbType.SmallInt, m_GenPos_Z);
-            comm.Parameters.Add("@GenWorldID", SqlDbType.SmallInt, m_GenWorldID);
+            comm.Parameters.AddWithValue("@ID", m_ID);
+            comm.Parameters.AddWithValue("@GenRegionID",  m_GenRegionID);
+            comm.Parameters.AddWithValue("@GenPos_X", m_GenPos_X);
+            comm.Parameters.AddWithValue("@GenPos_Y",  m_GenPos_Y);
+            comm.Parameters.AddWithValue("@GenPos_Z", m_GenPos_Z);
+            comm.Parameters.AddWithValue("@GenWorldID",  m_GenWorldID);
 
         }
     }
