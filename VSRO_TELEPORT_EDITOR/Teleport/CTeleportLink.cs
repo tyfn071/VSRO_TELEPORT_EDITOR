@@ -124,18 +124,57 @@ namespace VSRO_TELEPORT_EDITOR
         public STeleportRestrict Restrict4 { get; set; }
         public STeleportRestrict Restrict5 { get; set; }
 
+        protected override void LoadParameters(SqlCommand comm)
+        {
+            base.LoadParameters(comm);
+            comm.Parameters.AddWithValue("@OwnerTeleport", m_OwnerTeleport);
+            comm.Parameters.AddWithValue("@TargetTeleport", m_TargetTeleport);
+            comm.Parameters.AddWithValue("@Fee", m_Fee);
+            comm.Parameters.AddWithValue("@RestrictBindMethod", m_RestrictBindMethod);
+            comm.Parameters.AddWithValue("@RunTimeTeleportMethod", m_RunTimeTeleportMethod);
+            comm.Parameters.AddWithValue("@CheckResult", m_ChectResult);
+
+            comm.Parameters.AddWithValue("@Restrict1", (int)Restrict1.m_RestrictType);
+            comm.Parameters.AddWithValue("@Data1_1", Restrict1.m_Data1);
+            comm.Parameters.AddWithValue("@Data1_2", Restrict1.m_Data2);
+
+            comm.Parameters.AddWithValue("@Restrict2", (int)Restrict2.m_RestrictType);
+            comm.Parameters.AddWithValue("@Data2_1", Restrict2.m_Data1);
+            comm.Parameters.AddWithValue("@Data2_2", Restrict2.m_Data2);
+
+            comm.Parameters.AddWithValue("@Restrict3", (int)Restrict3.m_RestrictType);
+            comm.Parameters.AddWithValue("@Data3_1", Restrict3.m_Data1);
+            comm.Parameters.AddWithValue("@Data3_2", Restrict3.m_Data2);
+
+            comm.Parameters.AddWithValue("@Restrict4", (int)Restrict4.m_RestrictType);
+            comm.Parameters.AddWithValue("@Data4_1", Restrict4.m_Data1);
+            comm.Parameters.AddWithValue("@Data4_2", Restrict4.m_Data2);
+
+            comm.Parameters.AddWithValue("@Restrict5", (int)Restrict5.m_RestrictType);
+            comm.Parameters.AddWithValue("@Data5_1", Restrict5.m_Data1);
+            comm.Parameters.AddWithValue("@Data5_2", Restrict5.m_Data2);
+
+        }
+
         protected override string GetInsertQuery()
-        {
-            throw new NotImplementedException();
-        }
+       => "insert into _RefTeleLink values(@Service, (select ID from _RefTeleport where CodeName128=@OwnerTeleport),(select ID from _RefTeleport where CodeName128=@TargetTeleport),@Fee,@RestrictBindMethod,@RunTimeTeleportMethod,@CheckResult"
+                       + ",@Restrict1,@Data1_1,@Data1_2," +
+                          ",@Restrict2,@Data2_1,@Data2_2," +
+                          ",@Restrict3,@Data3_1,@Data3_2," +
+                          ",@Restrict4,@Data4_1,@Data4_2," +
+                          ",@Restrict5,@Data5_1,@Data5_2)";
         protected override string GetRemoveQuery()
-        {
-            throw new NotImplementedException();
-        }
+        => "delete from _RefTeleLink where OwnerTeleport=(select ID from _RefTeleport where CodeName128=@OwnerTeleport) and TargetTeleport=(select ID from _RefTeleport where CodeName128=@TargetTeleport)";
         protected override string GetUpdateQuery()
-        {
-            throw new NotImplementedException();
-        }
+        => "update _RefTeleLink set Service=@Service," +
+                        "Fee=@Fee," +
+                        "Restrict1=@Restrict1,Data1_1=@Data1_1,Data1_2=@Data1_2," +
+                        "Restrict2=@Restrict2,Data2_1=@Data2_1,Data2_2=@Data2_2," +
+                        "Restrict3=@Restrict3,Data3_1=@Data3_1,Data3_2=@Data3_2," +
+                        "Restrict4=@Restrict4,Data4_1=@Data4_1,Data4_2=@Data4_2," +
+                        "Restrict5=@Restrict5,Data5_1=@Data5_1,Data5_2=@Data5_2 where OwnerTeleport=(select ID from _RefTeleport where CodeName128=@OwnerTeleport) and TargetTeleport=(select ID from _RefTeleport where CodeName128=@TargetTeleport)";
+
+
 
     }
 }

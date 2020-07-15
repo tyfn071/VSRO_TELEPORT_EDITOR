@@ -31,8 +31,18 @@ namespace VSRO_TELEPORT_EDITOR
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            Globals.s_SqlConnectionString= "Data Source=TAYFUNOSMAN; Initial Catalog=SRO_VT_SHARD; User Id=tyfn071; Password=1119007";
-            Globals.LoadGameWorlds();
+            if (Properties.Settings.Default.DBUserID != string.Empty)
+            {
+                Globals.s_SqlConnectionString = $"Data Source={Properties.Settings.Default.SQLServer}; Initial Catalog={Properties.Settings.Default.DatabaseName}; User Id={Properties.Settings.Default.DBUserID}; Password={Properties.Settings.Default.DBPassword}";
+                Globals.LoadGameWorlds();
+            }      
+            else
+            {
+                cAddTeleportButton.Enabled = false;
+                cTeleportLinkButton.Enabled = false;
+                cOptionalTeleportButton.Enabled = false;
+                OpenForm(new SettingsForm());
+            }
         }
 
         private void simpleButton2_Click(object sender, EventArgs e)
@@ -43,6 +53,16 @@ namespace VSRO_TELEPORT_EDITOR
         private void cGitHubHyperLink_Click(object sender, EventArgs e)
         {
             Process.Start("https://github.com/tyfn071");
+        }
+
+        private void simpleButton4_Click(object sender, EventArgs e)
+        {
+            OpenForm(new SettingsForm());
+        }
+
+        private void cOptionalTeleportButton_Click(object sender, EventArgs e)
+        {
+            OpenForm(new OptTeleportForm());
         }
     }
 }

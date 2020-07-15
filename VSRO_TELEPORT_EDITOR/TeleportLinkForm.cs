@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using System.Threading;
 using System.ComponentModel.DataAnnotations;
+using DevExpress.ClipboardSource.SpreadsheetML;
 
 namespace VSRO_TELEPORT_EDITOR
 {
@@ -19,7 +20,7 @@ namespace VSRO_TELEPORT_EDITOR
         {
             InitializeComponent();
         }
-
+        List<DataGridViewRow> RemovedRows = new List<DataGridViewRow>();
         public static string GetRestrictDesc(STeleportRestrict.RestrictType type)
         {
             string sonuc = "";
@@ -128,6 +129,7 @@ namespace VSRO_TELEPORT_EDITOR
             LoadLinks();
         }
 
+
         private async void LoadLinks()
         {
             List<CTeleportLink> linkList = await CTeleportLink.GetTeleportLinks();
@@ -172,7 +174,72 @@ namespace VSRO_TELEPORT_EDITOR
 
         private void cSaveButton_Click(object sender, EventArgs e)
         {
+            if (MessageBox.Show("Are you sure that you want to save changes to database?", "WARNING!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
 
+                List<DataGridViewRow> rows = _linkgrid.Rows.Cast<DataGridViewRow>().ToList();
+                _ = rows.Concat(RemovedRows).ToList();
+
+                rows.ForEach(linkRow =>
+                {
+
+                    CTeleportLink link = new CTeleportLink();
+
+                    link.m_Service = bool.Parse(linkRow.Cells[0].Value.ToString()) ? 1 : 0;
+                    link.m_OwnerTeleport = linkRow.Cells[1].Value.ToString();
+                    link.m_TargetTeleport = linkRow.Cells[2].Value.ToString();
+                    link.m_Fee = Convert.ToInt32(linkRow.Cells[3].Value.ToString());
+                    link.m_RestrictBindMethod = 0;
+                    link.m_RunTimeTeleportMethod = 0;
+                    link.m_ChectResult = 0;
+
+                    STeleportRestrict restrict1;
+                    restrict1.m_RestrictType=GetRestrictType(linkRow.Cells[4].Value.ToString());
+                    restrict1.m_Data1 = Convert.ToInt32(linkRow.Cells[5].Value.ToString());
+                    restrict1.m_Data2 = Convert.ToInt32(linkRow.Cells[6].Value.ToString());
+                    link.Restrict1 = restrict1;
+
+                    STeleportRestrict restrict2;
+                    restrict2.m_RestrictType = GetRestrictType(linkRow.Cells[7].Value.ToString());
+                    restrict2.m_Data1 = Convert.ToInt32(linkRow.Cells[8].Value.ToString());
+                    restrict2.m_Data2 = Convert.ToInt32(linkRow.Cells[9].Value.ToString());
+                    link.Restrict2 = restrict2;
+
+                    STeleportRestrict restrict3;
+                    restrict3.m_RestrictType = GetRestrictType(linkRow.Cells[10].Value.ToString());
+                    restrict3.m_Data1 = Convert.ToInt32(linkRow.Cells[11].Value.ToString());
+                    restrict3.m_Data2 = Convert.ToInt32(linkRow.Cells[12].Value.ToString());
+                    link.Restrict3 = restrict3;
+
+                    STeleportRestrict restrict4;
+                    restrict4.m_RestrictType = GetRestrictType(linkRow.Cells[13].Value.ToString());
+                    restrict4.m_Data1 = Convert.ToInt32(linkRow.Cells[14].Value.ToString());
+                    restrict4.m_Data2 = Convert.ToInt32(linkRow.Cells[15].Value.ToString());
+                    link.Restrict4 = restrict4;
+
+                    STeleportRestrict restrict5;
+                    restrict5.m_RestrictType = GetRestrictType(linkRow.Cells[16].Value.ToString());
+                    restrict5.m_Data1 = Convert.ToInt32(linkRow.Cells[17].Value.ToString());
+                    restrict5.m_Data2 = Convert.ToInt32(linkRow.Cells[18].Value.ToString());
+                    link.Restrict5 = restrict5;
+
+                    link.m_Status = (EditStatus)linkRow.Tag;
+
+                    link.SaveToDatabase();
+
+                    if ((EditStatus)linkRow.Tag != EditStatus.Removed)
+                    {
+                        linkRow.Cells[1].ReadOnly = true;
+                        linkRow.Cells[3].ReadOnly = true;
+                        linkRow.Tag = EditStatus.Notr;
+                    }
+                });
+
+            }
+
+
+
+            
         }
 
         private void cAddButton_Click(object sender, EventArgs e)
@@ -200,6 +267,29 @@ namespace VSRO_TELEPORT_EDITOR
             row.Cells[18].Value = 0;
             _linkgrid.FirstDisplayedScrollingRowIndex = _linkgrid.RowCount - 1;
 
+        }
+
+        private void cRemoveButton_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure that you want to permamently delete selected rows?", "WARNING!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                foreach (DataGridViewRow row in _linkgrid.SelectedRows)
+                {
+                    if ((EditStatus)row.Tag != EditStatus.New)
+                    {
+                        row.Tag = EditStatus.Removed;
+                        RemovedRows.Add(row);
+                    }
+                    _linkgrid.Rows.Remove(row);
+                }
+            }
+                
+        }
+
+        private void _linkgrid_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if ((EditStatus)_linkgrid.Rows[e.RowIndex].Tag != EditStatus.New)
+                _linkgrid.Rows[e.RowIndex].Tag = EditStatus.Edited;
         }
     }
 }

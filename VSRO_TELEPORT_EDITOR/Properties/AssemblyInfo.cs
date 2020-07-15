@@ -5,10 +5,10 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("VSRO_TELEPORT_EDITOR")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Vsro Teleport Editor")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("VSRO_TELEPORT_EDITOR")]
+[assembly: AssemblyCompany("tyfn071")]
+[assembly: AssemblyProduct("Vsro Teleport Editor")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

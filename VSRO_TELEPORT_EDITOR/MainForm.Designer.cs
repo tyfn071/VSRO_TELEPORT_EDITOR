@@ -30,9 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.cLefPanel = new DevExpress.XtraEditors.PanelControl();
-            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            this.cSettingsButton = new DevExpress.XtraEditors.SimpleButton();
+            this.cOptionalTeleportButton = new DevExpress.XtraEditors.SimpleButton();
+            this.cTeleportLinkButton = new DevExpress.XtraEditors.SimpleButton();
             this.cAddTeleportButton = new DevExpress.XtraEditors.SimpleButton();
             this.cMainPanel = new DevExpress.XtraEditors.PanelControl();
             this.cLogPanel = new DevExpress.XtraEditors.PanelControl();
@@ -47,9 +47,9 @@
             // 
             // cLefPanel
             // 
-            this.cLefPanel.Controls.Add(this.simpleButton4);
-            this.cLefPanel.Controls.Add(this.simpleButton3);
-            this.cLefPanel.Controls.Add(this.simpleButton2);
+            this.cLefPanel.Controls.Add(this.cSettingsButton);
+            this.cLefPanel.Controls.Add(this.cOptionalTeleportButton);
+            this.cLefPanel.Controls.Add(this.cTeleportLinkButton);
             this.cLefPanel.Controls.Add(this.cAddTeleportButton);
             this.cLefPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.cLefPanel.Location = new System.Drawing.Point(0, 0);
@@ -57,33 +57,35 @@
             this.cLefPanel.Size = new System.Drawing.Size(179, 569);
             this.cLefPanel.TabIndex = 1;
             // 
-            // simpleButton4
+            // cSettingsButton
             // 
-            this.simpleButton4.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton4.ImageOptions.SvgImage")));
-            this.simpleButton4.Location = new System.Drawing.Point(5, 330);
-            this.simpleButton4.Name = "simpleButton4";
-            this.simpleButton4.Size = new System.Drawing.Size(168, 48);
-            this.simpleButton4.TabIndex = 3;
-            this.simpleButton4.Text = "Settings";
+            this.cSettingsButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton4.ImageOptions.SvgImage")));
+            this.cSettingsButton.Location = new System.Drawing.Point(5, 330);
+            this.cSettingsButton.Name = "cSettingsButton";
+            this.cSettingsButton.Size = new System.Drawing.Size(168, 48);
+            this.cSettingsButton.TabIndex = 3;
+            this.cSettingsButton.Text = "Settings";
+            this.cSettingsButton.Click += new System.EventHandler(this.simpleButton4_Click);
             // 
-            // simpleButton3
+            // cOptionalTeleportButton
             // 
-            this.simpleButton3.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton3.ImageOptions.SvgImage")));
-            this.simpleButton3.Location = new System.Drawing.Point(5, 266);
-            this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(168, 48);
-            this.simpleButton3.TabIndex = 2;
-            this.simpleButton3.Text = "Reverse Scroll Points";
+            this.cOptionalTeleportButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton3.ImageOptions.SvgImage")));
+            this.cOptionalTeleportButton.Location = new System.Drawing.Point(5, 266);
+            this.cOptionalTeleportButton.Name = "cOptionalTeleportButton";
+            this.cOptionalTeleportButton.Size = new System.Drawing.Size(168, 48);
+            this.cOptionalTeleportButton.TabIndex = 2;
+            this.cOptionalTeleportButton.Text = "Reverse Scroll Points";
+            this.cOptionalTeleportButton.Click += new System.EventHandler(this.cOptionalTeleportButton_Click);
             // 
-            // simpleButton2
+            // cTeleportLinkButton
             // 
-            this.simpleButton2.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton2.ImageOptions.SvgImage")));
-            this.simpleButton2.Location = new System.Drawing.Point(5, 203);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(168, 48);
-            this.simpleButton2.TabIndex = 1;
-            this.simpleButton2.Text = "Teleport Links";
-            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
+            this.cTeleportLinkButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton2.ImageOptions.SvgImage")));
+            this.cTeleportLinkButton.Location = new System.Drawing.Point(5, 203);
+            this.cTeleportLinkButton.Name = "cTeleportLinkButton";
+            this.cTeleportLinkButton.Size = new System.Drawing.Size(168, 48);
+            this.cTeleportLinkButton.TabIndex = 1;
+            this.cTeleportLinkButton.Text = "Teleport Links";
+            this.cTeleportLinkButton.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
             // cAddTeleportButton
             // 
@@ -157,9 +159,9 @@
         #endregion
         private DevExpress.XtraEditors.PanelControl cLefPanel;
         private DevExpress.XtraEditors.PanelControl cMainPanel;
-        private DevExpress.XtraEditors.SimpleButton simpleButton4;
-        private DevExpress.XtraEditors.SimpleButton simpleButton3;
-        private DevExpress.XtraEditors.SimpleButton simpleButton2;
+        private DevExpress.XtraEditors.SimpleButton cSettingsButton;
+        private DevExpress.XtraEditors.SimpleButton cOptionalTeleportButton;
+        private DevExpress.XtraEditors.SimpleButton cTeleportLinkButton;
         private DevExpress.XtraEditors.SimpleButton cAddTeleportButton;
         private DevExpress.XtraEditors.PanelControl cLogPanel;
         private DevExpress.XtraEditors.HyperlinkLabelControl cGitHubHyperLink;
