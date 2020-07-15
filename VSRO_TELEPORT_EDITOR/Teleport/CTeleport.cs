@@ -11,6 +11,26 @@ namespace VSRO_TELEPORT_EDITOR
 {
     public sealed class CTeleport : CTeleportService
     {
+        internal static async Task<HashSet<string>> GetTeleportCodeNames()
+        {
+            HashSet<string> codenames = new HashSet<string>();
+            using (SqlConnection conn = new SqlConnection(Globals.s_SqlConnectionString))
+            {
+                conn.Open();
+                using (SqlCommand command = new SqlCommand("select LTRIM(RTRIM(CodeName128)) from _RefTeleport order by ID", conn))
+                {
+                    using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                    {
+                        if (reader.HasRows)
+                        {                            
+                            while (reader.Read())
+                                codenames.Add(reader.GetString(0));
+                        }
+                    }
+                }               
+            }
+            return codenames;
+        }
         public CTeleport():base()
         {
 

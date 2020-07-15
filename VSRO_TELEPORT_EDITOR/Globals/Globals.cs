@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace VSRO_TELEPORT_EDITOR
 {
@@ -37,5 +38,11 @@ namespace VSRO_TELEPORT_EDITOR
             }
         }
 
+        internal static void SetDataGridComboBoxColumn<T>(int idx, List<T> dSource,DataGridView refGridView)
+        {
+            DataGridViewComboBoxColumn c = (DataGridViewComboBoxColumn)refGridView.Columns[idx];
+            c.ValueType = typeof(T);
+            c.DataSource = dSource;
+        }
     }
 }

@@ -26,34 +26,15 @@ namespace VSRO_TELEPORT_EDITOR
 
         private async Task GetTeleportCodeNames()
         {
-            using(SqlConnection conn=new SqlConnection(Globals.s_SqlConnectionString))
+            HashSet<string> codenames = await CTeleport.GetTeleportCodeNames();
+            codenames.ForEach(codename =>
             {
-                conn.Open();
-                using(SqlCommand command=new SqlCommand("select LTRIM(RTRIM(CodeName128)) from _RefTeleport order by ID",conn))
-                {
-                    using (SqlDataReader reader = await command.ExecuteReaderAsync())
-                    {
-                        if (reader.HasRows)
-                        {
 
-                            HashSet<string> codenames = new HashSet<string>();
-                            while (reader.Read())
-                                codenames.Add(reader.GetString(0));
-
-                            codenames.ForEach(codename =>
-                            {
-
-                                if (cPortalList.InvokeRequired)
-                                    cPortalList.BeginInvoke((Action)(() => cPortalList.Items.Add(codename)));
-                                else
-                                    cPortalList.Items.Add(codename);
-                            });
-                                                    
-                                
-                        }
-                    }                    
-                }
-            }
+                if (cPortalList.InvokeRequired)
+                    cPortalList.BeginInvoke((Action)(() => cPortalList.Items.Add(codename)));
+                else
+                    cPortalList.Items.Add(codename);
+            });            
         }
         private void ParseSelectedTeleport()
         {

@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraEditors;
 using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace VSRO_TELEPORT_EDITOR
@@ -32,6 +33,16 @@ namespace VSRO_TELEPORT_EDITOR
         {
             Globals.s_SqlConnectionString= "Data Source=TAYFUNOSMAN; Initial Catalog=SRO_VT_SHARD; User Id=tyfn071; Password=1119007";
             Globals.LoadGameWorlds();
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            OpenForm(new TeleportLinkForm());
+        }
+
+        private void cGitHubHyperLink_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://github.com/tyfn071");
         }
     }
 }
