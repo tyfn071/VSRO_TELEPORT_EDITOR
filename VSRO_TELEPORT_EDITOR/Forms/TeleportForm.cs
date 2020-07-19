@@ -111,6 +111,7 @@ namespace VSRO_TELEPORT_EDITOR
                         SelectedTeleport.m_Status = EditStatus.Edited;
 
                     SelectedTeleport.SaveToDatabase();
+                    cID.Text = SelectedTeleport.m_ID.ToString();
                     CTeleportBase.SaveToClient("teleportdata.txt");
                     MessageBox.Show("Your changes is successfully saved!", "NOTICE", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -179,6 +180,8 @@ namespace VSRO_TELEPORT_EDITOR
                 SelectedTeleport.SaveToDatabase();
                 ClearControls();
                 cPortalList.Items.Remove(SelectedTeleport.m_CodeName128);
+                CTeleportBase.SaveToClient("teleportdata.txt");
+                CTeleportBase.SaveToClient("teleportlink.txt");
                 ChangeStatus(false);
             }
         }

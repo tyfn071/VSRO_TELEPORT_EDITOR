@@ -48,7 +48,11 @@ namespace VSRO_TELEPORT_EDITOR
                     tp.SaveToDatabase();
 
                     if ((EditStatus)row.Tag != EditStatus.Removed)
+                    {
                         row.Tag = EditStatus.Notr;
+                        row.Cells[1].Value = tp.m_ID;
+                    }
+                        
 
                 });
                 RemovedRows.Clear();

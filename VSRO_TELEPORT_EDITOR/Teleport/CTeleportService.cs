@@ -50,5 +50,35 @@ namespace VSRO_TELEPORT_EDITOR
             comm.Parameters.AddWithValue("@GenWorldID",  m_GenWorldID);
 
         }
+        public override void SaveToDatabase()
+        {
+            if (m_Status != EditStatus.Notr)
+            {
+                if (m_Status == EditStatus.New)
+                {
+                    string sqlQuery = string.Empty;
+
+                    using (SqlConnection conn = new SqlConnection(Globals.s_SqlConnectionString))
+                    {
+                        conn.Open();
+                        using (SqlCommand comm = new SqlCommand(sqlQuery, conn))
+                        {
+                            LoadParameters(comm);
+
+                            using (SqlDataReader reader = comm.ExecuteReader())
+                            {
+                                reader.Read();
+                                m_ID = reader.GetInt32(0);
+                            }
+
+                            m_Status = EditStatus.Notr;
+                        }
+                    }
+                }
+                else
+                    base.SaveToDatabase();
+                
+            }
+        }
     }
 }
