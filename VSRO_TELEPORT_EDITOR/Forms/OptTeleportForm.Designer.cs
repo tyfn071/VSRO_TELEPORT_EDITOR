@@ -28,25 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OptTeleportForm));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.cTpGrid = new System.Windows.Forms.DataGridView();
-            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.cSaveButton = new DevExpress.XtraEditors.SimpleButton();
-            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.cAddButton = new DevExpress.XtraEditors.SimpleButton();
-            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.cRemoveButton = new DevExpress.XtraEditors.SimpleButton();
+            this.cAddButton = new DevExpress.XtraEditors.SimpleButton();
+            this.cSaveButton = new DevExpress.XtraEditors.SimpleButton();
+            this.cTpGrid = new System.Windows.Forms.DataGridView();
+            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.Service = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ObjName128 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ZoneName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ZoneCodename = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RegionID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Pos_X = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,8 +58,8 @@
             this.LevelMax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cTpGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
@@ -82,6 +81,92 @@
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
+            // cRemoveButton
+            // 
+            this.cRemoveButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("cRemoveButton.ImageOptions.SvgImage")));
+            this.cRemoveButton.Location = new System.Drawing.Point(790, 521);
+            this.cRemoveButton.Name = "cRemoveButton";
+            this.cRemoveButton.Size = new System.Drawing.Size(96, 36);
+            this.cRemoveButton.StyleController = this.layoutControl1;
+            this.cRemoveButton.TabIndex = 9;
+            this.cRemoveButton.Text = "Remove";
+            this.cRemoveButton.Click += new System.EventHandler(this.cRemoveButton_Click);
+            // 
+            // cAddButton
+            // 
+            this.cAddButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("cAddButton.ImageOptions.SvgImage")));
+            this.cAddButton.Location = new System.Drawing.Point(713, 521);
+            this.cAddButton.Name = "cAddButton";
+            this.cAddButton.Size = new System.Drawing.Size(73, 36);
+            this.cAddButton.StyleController = this.layoutControl1;
+            this.cAddButton.TabIndex = 8;
+            this.cAddButton.Text = "Add";
+            this.cAddButton.Click += new System.EventHandler(this.cAddButton_Click);
+            // 
+            // cSaveButton
+            // 
+            this.cSaveButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("cSaveButton.ImageOptions.SvgImage")));
+            this.cSaveButton.Location = new System.Drawing.Point(12, 521);
+            this.cSaveButton.Name = "cSaveButton";
+            this.cSaveButton.Size = new System.Drawing.Size(208, 36);
+            this.cSaveButton.StyleController = this.layoutControl1;
+            this.cSaveButton.TabIndex = 7;
+            this.cSaveButton.Text = "Save Changes";
+            this.cSaveButton.Click += new System.EventHandler(this.cSaveButton_Click);
+            // 
+            // cTpGrid
+            // 
+            this.cTpGrid.AllowUserToAddRows = false;
+            this.cTpGrid.AllowUserToDeleteRows = false;
+            this.cTpGrid.AllowUserToResizeColumns = false;
+            this.cTpGrid.AllowUserToResizeRows = false;
+            this.cTpGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.cTpGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.cTpGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.cTpGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.cTpGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Service,
+            this.ID,
+            this.ObjName128,
+            this.ZoneCodename,
+            this.RegionID,
+            this.Pos_X,
+            this.Pos_Y,
+            this.Pos_Z,
+            this.WorldID,
+            this.RegionIDGroup,
+            this.MapPoint,
+            this.LevelMin,
+            this.LevelMax});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(218)))), ((int)(((byte)(218)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.cTpGrid.DefaultCellStyle = dataGridViewCellStyle2;
+            this.cTpGrid.Location = new System.Drawing.Point(12, 12);
+            this.cTpGrid.Name = "cTpGrid";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.cTpGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.cTpGrid.Size = new System.Drawing.Size(874, 505);
+            this.cTpGrid.TabIndex = 6;
+            this.cTpGrid.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.cTpGrid_CellEndEdit);
+            // 
             // Root
             // 
             this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -96,59 +181,6 @@
             this.Root.Size = new System.Drawing.Size(898, 569);
             this.Root.TextVisible = false;
             // 
-            // cTpGrid
-            // 
-            this.cTpGrid.AllowUserToAddRows = false;
-            this.cTpGrid.AllowUserToDeleteRows = false;
-            this.cTpGrid.AllowUserToResizeColumns = false;
-            this.cTpGrid.AllowUserToResizeRows = false;
-            this.cTpGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.cTpGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.cTpGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.cTpGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.cTpGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Service,
-            this.ID,
-            this.ObjName128,
-            this.ZoneName,
-            this.ZoneCodename,
-            this.RegionID,
-            this.Pos_X,
-            this.Pos_Y,
-            this.Pos_Z,
-            this.WorldID,
-            this.RegionIDGroup,
-            this.MapPoint,
-            this.LevelMin,
-            this.LevelMax});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(218)))), ((int)(((byte)(218)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.cTpGrid.DefaultCellStyle = dataGridViewCellStyle5;
-            this.cTpGrid.Location = new System.Drawing.Point(12, 12);
-            this.cTpGrid.Name = "cTpGrid";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.cTpGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.cTpGrid.Size = new System.Drawing.Size(874, 505);
-            this.cTpGrid.TabIndex = 6;
-            // 
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.cTpGrid;
@@ -157,17 +189,6 @@
             this.layoutControlItem1.Size = new System.Drawing.Size(878, 509);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
-            // 
-            // cSaveButton
-            // 
-            this.cSaveButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton1.ImageOptions.SvgImage")));
-            this.cSaveButton.Location = new System.Drawing.Point(12, 521);
-            this.cSaveButton.Name = "cSaveButton";
-            this.cSaveButton.Size = new System.Drawing.Size(208, 36);
-            this.cSaveButton.StyleController = this.layoutControl1;
-            this.cSaveButton.TabIndex = 7;
-            this.cSaveButton.Text = "Save Changes";
-            this.cSaveButton.Click += new System.EventHandler(this.cSaveButton_Click);
             // 
             // layoutControlItem2
             // 
@@ -178,16 +199,6 @@
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
-            // cAddButton
-            // 
-            this.cAddButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton2.ImageOptions.SvgImage")));
-            this.cAddButton.Location = new System.Drawing.Point(713, 521);
-            this.cAddButton.Name = "cAddButton";
-            this.cAddButton.Size = new System.Drawing.Size(73, 36);
-            this.cAddButton.StyleController = this.layoutControl1;
-            this.cAddButton.TabIndex = 8;
-            this.cAddButton.Text = "Add";
-            // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.cAddButton;
@@ -196,16 +207,6 @@
             this.layoutControlItem3.Size = new System.Drawing.Size(77, 40);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
-            // 
-            // cRemoveButton
-            // 
-            this.cRemoveButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton3.ImageOptions.SvgImage")));
-            this.cRemoveButton.Location = new System.Drawing.Point(790, 521);
-            this.cRemoveButton.Name = "cRemoveButton";
-            this.cRemoveButton.Size = new System.Drawing.Size(96, 36);
-            this.cRemoveButton.StyleController = this.layoutControl1;
-            this.cRemoveButton.TabIndex = 9;
-            this.cRemoveButton.Text = "Remove";
             // 
             // layoutControlItem4
             // 
@@ -242,13 +243,6 @@
             this.ObjName128.HeaderText = "ObjName";
             this.ObjName128.Name = "ObjName128";
             this.ObjName128.Width = 76;
-            // 
-            // ZoneName
-            // 
-            this.ZoneName.HeaderText = "Zone Name";
-            this.ZoneName.Name = "ZoneName";
-            this.ZoneName.ReadOnly = true;
-            this.ZoneName.Width = 88;
             // 
             // ZoneCodename
             // 
@@ -326,8 +320,8 @@
             this.Load += new System.EventHandler(this.OptTeleportForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cTpGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
@@ -353,7 +347,6 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn Service;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn ObjName128;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ZoneName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ZoneCodename;
         private System.Windows.Forms.DataGridViewTextBoxColumn RegionID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Pos_X;

@@ -10,7 +10,6 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using System.Threading;
 using System.ComponentModel.DataAnnotations;
-using DevExpress.ClipboardSource.SpreadsheetML;
 
 namespace VSRO_TELEPORT_EDITOR
 {
@@ -193,35 +192,21 @@ namespace VSRO_TELEPORT_EDITOR
                     link.m_RunTimeTeleportMethod = 0;
                     link.m_ChectResult = 0;
 
-                    STeleportRestrict restrict1;
-                    restrict1.m_RestrictType=GetRestrictType(linkRow.Cells[4].Value.ToString());
-                    restrict1.m_Data1 = Convert.ToInt32(linkRow.Cells[5].Value.ToString());
-                    restrict1.m_Data2 = Convert.ToInt32(linkRow.Cells[6].Value.ToString());
-                    link.Restrict1 = restrict1;
-
-                    STeleportRestrict restrict2;
-                    restrict2.m_RestrictType = GetRestrictType(linkRow.Cells[7].Value.ToString());
-                    restrict2.m_Data1 = Convert.ToInt32(linkRow.Cells[8].Value.ToString());
-                    restrict2.m_Data2 = Convert.ToInt32(linkRow.Cells[9].Value.ToString());
-                    link.Restrict2 = restrict2;
-
-                    STeleportRestrict restrict3;
-                    restrict3.m_RestrictType = GetRestrictType(linkRow.Cells[10].Value.ToString());
-                    restrict3.m_Data1 = Convert.ToInt32(linkRow.Cells[11].Value.ToString());
-                    restrict3.m_Data2 = Convert.ToInt32(linkRow.Cells[12].Value.ToString());
-                    link.Restrict3 = restrict3;
-
-                    STeleportRestrict restrict4;
-                    restrict4.m_RestrictType = GetRestrictType(linkRow.Cells[13].Value.ToString());
-                    restrict4.m_Data1 = Convert.ToInt32(linkRow.Cells[14].Value.ToString());
-                    restrict4.m_Data2 = Convert.ToInt32(linkRow.Cells[15].Value.ToString());
-                    link.Restrict4 = restrict4;
-
-                    STeleportRestrict restrict5;
-                    restrict5.m_RestrictType = GetRestrictType(linkRow.Cells[16].Value.ToString());
-                    restrict5.m_Data1 = Convert.ToInt32(linkRow.Cells[17].Value.ToString());
-                    restrict5.m_Data2 = Convert.ToInt32(linkRow.Cells[18].Value.ToString());
-                    link.Restrict5 = restrict5;
+                    link.Restrict1 = new STeleportRestrict(GetRestrictType(linkRow.Cells[4].Value.ToString()),
+                        Convert.ToInt32(linkRow.Cells[5].Value.ToString()),
+                        Convert.ToInt32(linkRow.Cells[6].Value.ToString()));
+                    link.Restrict2 = new STeleportRestrict(GetRestrictType(linkRow.Cells[7].Value.ToString()),
+                        Convert.ToInt32(linkRow.Cells[8].Value.ToString()),
+                        Convert.ToInt32(linkRow.Cells[9].Value.ToString()));
+                    link.Restrict3 = new STeleportRestrict(GetRestrictType(linkRow.Cells[10].Value.ToString()),
+                        Convert.ToInt32(linkRow.Cells[11].Value.ToString()),
+                        Convert.ToInt32(linkRow.Cells[12].Value.ToString()));
+                    link.Restrict4 = new STeleportRestrict(GetRestrictType(linkRow.Cells[13].Value.ToString()),
+                        Convert.ToInt32(linkRow.Cells[14].Value.ToString()),
+                        Convert.ToInt32(linkRow.Cells[15].Value.ToString()));
+                    link.Restrict5 = new STeleportRestrict(GetRestrictType(linkRow.Cells[16].Value.ToString()),
+                        Convert.ToInt32(linkRow.Cells[17].Value.ToString()),
+                        Convert.ToInt32(linkRow.Cells[18].Value.ToString()));
 
                     link.m_Status = (EditStatus)linkRow.Tag;
 
@@ -230,10 +215,14 @@ namespace VSRO_TELEPORT_EDITOR
                     if ((EditStatus)linkRow.Tag != EditStatus.Removed)
                     {
                         linkRow.Cells[1].ReadOnly = true;
-                        linkRow.Cells[3].ReadOnly = true;
+                        linkRow.Cells[2].ReadOnly = true;
                         linkRow.Tag = EditStatus.Notr;
                     }
                 });
+
+                RemovedRows.Clear();
+                CTeleportBase.SaveToClient("teleportlink.txt");
+                MessageBox.Show("Your changes is successfully saved!", "NOTICE", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
 

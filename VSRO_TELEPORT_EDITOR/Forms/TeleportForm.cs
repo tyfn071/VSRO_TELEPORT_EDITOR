@@ -12,6 +12,7 @@ using DevExpress.Utils.DirectXPaint;
 using System.IO;
 using System.Data.SqlClient;
 using DevExpress.XtraPrinting.Native;
+using DevExpress.Utils.Extensions;
 
 namespace VSRO_TELEPORT_EDITOR
 {
@@ -110,6 +111,7 @@ namespace VSRO_TELEPORT_EDITOR
                         SelectedTeleport.m_Status = EditStatus.Edited;
 
                     SelectedTeleport.SaveToDatabase();
+                    CTeleportBase.SaveToClient("teleportdata.txt");
                     MessageBox.Show("Your changes is successfully saved!", "NOTICE", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
